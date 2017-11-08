@@ -1,9 +1,6 @@
 <?php
 
-$server = "localhost";
-$username = "root";
-$password = "root";
-$db = "sakila";
+require "config.php";
 
 // Create connection
 $conn = mysqli_connect($server, $username, $password, $db);
@@ -12,7 +9,7 @@ $conn = mysqli_connect($server, $username, $password, $db);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully<br><br>";
+
 
 // A function for general queries.
 function query_to_db($conn, $sql){
@@ -28,36 +25,15 @@ function query_to_db($conn, $sql){
 
 
 // Receving the submitted data
-$age = $_POST["age"];
-$freq = $_POST["freq"];
 
 
-echo "Submitted Data: <br>";
-echo "Age? " . $age . "<br>";
 
-if ($age > 21){
-	echo "The user's weekly alcohol consumption frequecy: " . $freq . " times/week. ";
-}
-
-$answer1 = $age > 21 ? "yes" : "no";
-
-
-// // You need to save the data into the database.
-$sql = "INSERT INTO alcohol (adult, alcohol_freq) VALUES ('$answer1', '$freq');";
+// You need to save the data into the database. Write an INSERT query here.
+$sql = "";
 query_to_db($conn, $sql);
-
 
 
 
 mysqli_close($conn);
 
 
-
-
-
-
-
-
-
-
-?>
